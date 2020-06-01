@@ -2,7 +2,7 @@
 
 # Usage
 
-'''js
+```js
 import useInput from "@nooks/use-input"
 
 const App = () => {
@@ -15,4 +15,4 @@ const App = () => {
         </div>
     );
 };
-'''
+```
