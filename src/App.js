@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import useInput from "./useInput/useInput";
 import useTabs from "./useTabs/useTabs";
 import useTitle from "./useTitle/index";
-import useClick from "./useClick/index"
+import useClick from "./useClick/index";
+import useHover from "./useHover";
 
 export default function App() {
   const noAt = value => !value.includes("@");
@@ -18,8 +19,11 @@ export default function App() {
   const handleNumber = () => { console.log(number) };
   useEffect(handleNumber, [number, number_2]);
 
-  const setLog = () => { console.log("hell-o")}
+  const setLog = () => { console.log("hell-o") };
   const logger = useClick(setLog);
+
+  const setLog2 = () => { console.log("hover") };
+  const hover = useHover(setLog2);
 
   const titleUpdater = useTitle("Loading...");
   setTimeout(() => titleUpdater("Home"), 3000);
@@ -30,7 +34,7 @@ export default function App() {
       <input placeholder="Name" {...name} />
       <div>
         {tabs.map((tab, index) => <button key={tab.id} onClick={() => changeItem(index)}>{tab.id}</button>)}
-        <h2>{currentItem.content}</h2>
+        <h2 ref={hover}>{currentItem.content}</h2>
       </div>
       <div>
         <button onClick={() => setNumber(number + 1)}>{number}</button>
