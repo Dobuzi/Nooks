@@ -2,20 +2,21 @@
 
 Collection of React Hooks ready to install with NPM
 
-- [x] useInput
-- [x] useTabs
-- [x] useTitle
-- [x] useClick
-- [x] useHover
-- [ ] usePageLeave
+-   [x] useInput
+-   [x] useTabs
+-   [x] useTitle
+-   [x] useClick
+-   [x] useHover
+-   [x] useConfirm
+-   [ ] usePageLeave
 
 # Usage
 
 ```js
-import useInput from "@nooks/use-input"
+import useInput from "@nooks/use-input";
 
 const App = () => {
-    const noAt = value => !value.includes("@");
+    const noAt = (value) => !value.includes("@");
     const name = useInput("Mr. ", noAt);
     return (
         <div className="App">
