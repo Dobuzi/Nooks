@@ -9,6 +9,7 @@ import useTitle from "./useTitle/index";
 import useClick from "./useClick/index";
 import useHover from "./useHover";
 import useConfirm from "./useConfirm";
+import usePreventLeave from "./usePreventLeave";
 
 export default function App() {
     const noAt = (value) => !value.includes("@");
@@ -44,6 +45,8 @@ export default function App() {
 
     const confirmAction = useConfirm(MSG, delWorld, letItbeWorld);
 
+    const { enablePrevent, disablePrevent } = usePreventLeave();
+
     const titleUpdater = useTitle("Loading...");
     setTimeout(() => titleUpdater("Home"), 3000);
     useEffect(() => {
@@ -69,6 +72,8 @@ export default function App() {
             </div>
             <div>
                 <button onClick={confirmAction}>Del</button>
+                <button onClick={enablePrevent}>Protect</button>
+                <button onClick={disablePrevent}>Unprotect</button>
             </div>
         </div>
     );
