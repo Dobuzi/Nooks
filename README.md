@@ -10,6 +10,8 @@ Collection of React Hooks ready to install with NPM
 -   [x] useConfirm
 -   [x] usePreventLeave
 -   [x] useBeforeLeave
+-   [x] useFadeIn
+-   [x] useNetwork
 
 # Usage
 
@@ -22,7 +24,7 @@ const App = () => {
     return (
         <div className="App">
             <h1>Hello</h1>
-            <input placeholder="Name" {...name} />
+            <input placeholder="Name" {...name.props} />
         </div>
     );
 };
