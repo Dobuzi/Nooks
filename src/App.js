@@ -1,21 +1,29 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./App.css";
-// import { useEffect, useState } from "react";
 
-import useFadeIn from "./useFadeIn";
-import useNetwork from "./useNetwork";
+import useFullscreen from "./useFullScreen";
+import useScroll from "./useScroll";
 
 export default function App() {
-    const ref = useFadeIn(3, 0.5);
-    const logNet = (online) => {
-        console.log(online ? "Online" : "Offline");
+    const logFull = (isFull) => {
+        console.log(isFull ? "isFull" : "isNotFull");
     };
-    const net = useNetwork(logNet);
+    const { element, triggerFull, exitFull } = useFullscreen(logFull);
+    const IMG =
+        "https://images.unsplash.com/photo-1538592116845-119a3974c958?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1600&q=60";
+    const IMG_ALT = "red tesla model 3 in sunset";
+    const { y } = useScroll();
     return (
-        <div className="App">
-            <h1 {...ref}>Hello</h1>
-            <h2>{net ? "Online" : "Offline"}</h2>
+        <div className="App" style={{ height: "1000vh" }}>
+            <h3 style={{ position: "fixed", color: y > 100 ? "red" : "blue" }}>
+                Change color by scroll
+            </h3>
+            <div ref={element}>
+                <img src={IMG} alt={IMG_ALT} />
+                <button onClick={exitFull}>Exit Full Screen</button>
+            </div>
+            <button onClick={triggerFull}>Make Full Screen</button>
         </div>
     );
 }
