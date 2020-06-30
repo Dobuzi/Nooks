@@ -23,7 +23,6 @@ export const useFullscreen = (callback) => {
         }
     };
     const exitFull = () => {
-        document.exitFullscreen();
         if (document.exitFullscreen) {
             document.exitFullscreen();
         } else if (document.mozCancelFullScreen) {
